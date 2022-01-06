@@ -56,6 +56,25 @@ form {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.hour {
+  display:flex;
+  background-color: #ffffff;
+  color: #000000;
+  border-top: 1px dashed #000000;
+  position: relative;
+  height: 80px;
+  width: 5vw;
+  right: 2vw;
+  
+}
+
+@media only screen and (max-width:900px) {
+  form {
+   width: 90%;
+  } 
+  
+}
   
 
 
