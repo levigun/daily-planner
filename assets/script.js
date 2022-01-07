@@ -1,26 +1,29 @@
 // Query Selectors
-var saveButton = $(".save-button");
-var toDoInput = $(".todo-input");
+var saveButton = document.querySelector(".save-button");
+var toDoInput = document.querySelector(".todo-input");
 
 // prevent default of reloading for the click event
-saveButton.click(function (event) {
+saveButton.addEventListener ("click", function (event) {
     event.preventDefault();
-
-toDoInput.innerText = toDoInput.value;
-    
-});
-
-localStorage.setItem('toDoInput', JSON.stringify(toDoInput));
-saveEvent();
-
-function saveEvent() {
-    return JSON.parse(localStorage.getItem("toDoInput"));
-}
+    console.log(toDoInput.value)
 
 
 // after an event has been entered, the save button is clicked
 // saved to local storage
+
+localStorage.setItem('toDoInput', JSON.stringify(toDoInput.value));
+    
+});
+
+
+function saveEvent() {
+    return localStorage.getItem('toDoInput', JSON.parse((toDoInput.value)));
+}
+
 // when refreshed, the events are still there
+
+// when the date has changed, everything is gone
+// localStorage.clear();
 
 // add current day to header with moment.js
 var today = moment();
