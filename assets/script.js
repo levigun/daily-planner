@@ -1,7 +1,6 @@
 // Query Selectors
 var saveButton = document.querySelector(".save-button");
 var toDoInput = document.querySelector(".todo-input");
-var hour = $(".hour");
 
 // prevent default of reloading for the click event
 saveButton.addEventListener("click", function (event) {
@@ -30,10 +29,12 @@ function saveEvent() {
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
+var hour = $(".hour");
+
 // create current time var
 var currentHour = moment().format("h A");
-var splittedHour = hour.split("")[0];
-    console.log(splittedHour)
+var splittedHour = hour.split();
+    console.log(hour)
 
 // div of each time block is compared to current time
 // when it is the current time, the box is red
