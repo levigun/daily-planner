@@ -1,23 +1,24 @@
 // Query Selectors
 var saveButton = document.querySelector(".save-button");
 var toDoInput = document.querySelector(".todo-input");
+var hour = $(".hour");
 
 // prevent default of reloading for the click event
-saveButton.addEventListener ("click", function (event) {
+saveButton.addEventListener("click", function (event) {
     event.preventDefault();
     console.log(toDoInput.value)
 
 
-// after an event has been entered, the save button is clicked
-// saved to local storage
+    // after an event has been entered, the save button is clicked
+    // saved to local storage
 
-localStorage.setItem('toDoInput', JSON.stringify(toDoInput.value));
-    
+    localStorage.setItem('hour', JSON.stringify(toDoInput.value));
+
 });
 
 
 function saveEvent() {
-    return localStorage.getItem('toDoInput', JSON.parse((toDoInput.value)));
+    return localStorage.getItem('hour', JSON.parse((toDoInput.value)));
 }
 
 // when refreshed, the events are still there
@@ -31,22 +32,23 @@ $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
 // create current time var
 var currentHour = moment().format("h A");
-var hour = $(".hour");
+var splittedHour = hour.split("")[0];
+    console.log(splittedHour)
 
 // div of each time block is compared to current time
 // when it is the current time, the box is red
 if (currentHour == hour) {
-    $(".todo-input").css({ "background-color": "red", "color": "black" });
-}
+    $(".todo-input").addClass("present");
 
-// when it is the time after, the box is green
-if (currentHour < hour) {
-    $(".todo-input").css({ "background-color": "#77dd77", "color": "black" });
-}
+    // when it is the time after, the box is green
+} else if (currentHour < hour) {
 
-// when it is the time prior, the box is light gray
-if (currentHour > hour) {
-    $(".todo-input").css({ "background-color": "#d3d3d3", "color": "black" });
+    $(".todo-input").addClass("future");
+
+} else {
+
+    // when it is the time prior, the box is light gray
+    $(".todo-input").addClass("past");
 }
 
 // when the time is not shown in .hour, it will not do anything
