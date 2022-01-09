@@ -28,6 +28,7 @@ Follow these instructions on how to use the planner:
 7. When it is the next day, the daily planner will state the next day at the top of the page and automatically deletes all the events from the day before.
 
 ## Daily Planner Look
+![daily-planner-look](assets/daily-planner-look.gif)
 
 ## Credits
 https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide
