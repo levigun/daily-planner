@@ -3,15 +3,16 @@ var saveButton = document.querySelector(".save-button");
 var toDoInput = document.querySelector(".todo-input");
 
 // prevent default of reloading for the click event
+// TODO: forloop each button
 saveButton.addEventListener("click", function (event) {
     event.preventDefault();
     console.log(toDoInput.value)
-    
+
     // after an event has been entered, the save button is clicked
     // saved to local storage
-    
+
     localStorage.setItem('hour', JSON.stringify(toDoInput.value));
-    
+
 });
 
 
@@ -19,6 +20,12 @@ function saveEvent() {
     return localStorage.getItem('hour', JSON.parse((toDoInput.value)));
 }
 
+// const buttons = document.querySelectorAll(".save-button");
+// buttons.forEach(function(button){
+//   button.addEventListener("click", function(event){
+    // ...
+//   })
+// })
 
 // when refreshed, the events are still there
 
@@ -30,28 +37,38 @@ function saveEvent() {
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
-
-
 // create current time var
-var currentHour = moment().format("h A");
-    console.log(currentHour);
+var currentHour = moment().hour();
+console.log(currentHour);
 
-// create hour var from each timeblock
-var hour = document.getElementById("#9");
-    console.log(hour);  
+// create input hour var from each timeblock
+var inputHour = $(".todo-input");
+console.log(inputHour);
 
-// div of each time block is compared to current time
-// when it is the current time, the box is red
-if (currentHour == hour) {
-    $(".todo-input").addClass("present");
 
-    // when it is the time after, the box is green
-} else if (currentHour < hour) {
-    $(".todo-input").addClass("future");
+// for loop each inputhour with its length
+for (var i = 0; i < inputHour.length; i++) {
 
-    // when it is the time prior, the box is light gray
-} else {
-    $(".todo-input").addClass("past");
+    // created an if condition
+    // input hours index's id is compared to determine the time block current
+    // when the time is the same, the block will be red
+    if (currentHour == inputHour[i].id) {
+        console.log(currentHour); 
+        console.log("id", inputHour[i].id);
+        $("#" + (inputHour[i].id)).addClass("present"); 
+    
+    // when the current hour is smaller value, the color is green
+    } else if (currentHour < inputHour[i].id) {
+        console.log(currentHour); 
+        console.log("id", inputHour[i].id);
+        $("#" + (inputHour[i].id)).addClass("future");
+
+    // else the color will be light gray
+    } else {
+        console.log(currentHour); 
+        console.log("id", inputHour[i].id);
+        $("#" + (inputHour[i].id)).addClass("past");
+    }
 }
 
 
